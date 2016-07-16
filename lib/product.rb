@@ -16,7 +16,7 @@ class Product
   end
 
   def self.find_by_title(title)
-    return @@products.find {|product| product.title == title}
+    @@products.find {|product| product.title == title}
   end
 
   def self.in_stock
