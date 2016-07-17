@@ -17,6 +17,10 @@ class Customer
     @@customers.find {|customer| customer.name == search_name}
   end
 
+  def purchase(purchase_product)
+    Transaction.new(@name, purchase_product)
+  end
+
   private
 
   def add_to_customers
