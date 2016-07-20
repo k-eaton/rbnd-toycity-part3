@@ -1,5 +1,5 @@
 class Transaction
-  attr_reader :customer, :product, :id
+  attr_reader :customer, :product, :id, :transaction_type
 
   @@transactions = []
   @@transaction_id = 1
@@ -18,6 +18,24 @@ class Transaction
 
   def self.find(id)
     @@transactions.find {|transaction| transaction.id == id}
+  end
+
+  def self.find_by_product(product, type = "both")
+    if @@transactions.any? {|products| products.product == product}
+      if type == "both"
+        @@transactions.select {|products| products.product == product}
+      elsif type == "purchase"
+        @@transactions.select {|products| products.product == product && products.transaction_type == "purchase"}
+      else
+        @@transactions.select {|products| products.product == product && products.transaction_type != "purchase"}
+      end
+    else
+      begin
+        raise ProductNotFoundError, "No transactions for \'#{product.title}\' can be found."
+        rescue => error
+        puts error
+      end
+    end
   end
 
   private

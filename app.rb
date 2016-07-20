@@ -68,6 +68,26 @@ walter.purchase(firehouse)
 walter.return_product(firehouse)
 walter.return_product(nanoblock)
 
-puts firehouse.stock
-puts nanoblock.stock
-puts Transaction.all.count
+puts firehouse.stock # Should return 1
+puts nanoblock.stock # Should return 11
+puts Transaction.all.count # Should return 4
+
+transaction_nano = Transaction.find_by_product(nanoblock)
+transaction_nano.each {|trans| puts trans.transaction_type}
+puts transaction_nano.count
+
+
+transaction_nano2 = Transaction.find_by_product(nanoblock, "purchase")
+transaction_nano2.each {|trans| puts trans.transaction_type}
+puts transaction_nano2.count
+
+transaction_nano3 = Transaction.find_by_product(nanoblock, "returns")
+transaction_nano3.each {|trans| puts trans.transaction_type}
+puts transaction_nano3.count
+
+ironman = Product.find_by_title("LEGO Iron Man vs. Ultron")
+transaction_ironman = Transaction.find_by_product(ironman)
+# Should return No transactions for 'LEGO Iron Man vs. Ultron' can be found.
+
+
+
