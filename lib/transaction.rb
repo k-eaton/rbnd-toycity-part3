@@ -4,11 +4,12 @@ class Transaction
   @@transactions = []
   @@transaction_id = 1
 
-  def initialize(customer, product)
+  def initialize(customer, product, transaction_type="purchase")
     @customer = customer
     @product  = product
     @id       = @@transaction_id
-    add_transaction
+    @transaction_type = transaction_type
+    @transaction_type == "purchase" ? purchase_transaction : return_transaction
   end
 
   def self.all
@@ -21,7 +22,7 @@ class Transaction
 
   private
 
-  def add_transaction
+  def purchase_transaction
     if @product.stock > 1
       @product.stock -= 1
       @@transaction_id += 1
@@ -33,5 +34,11 @@ class Transaction
         puts error
       end
     end
+  end
+
+  def return_transaction
+    @product.stock += 1
+    @@transaction_id += 1
+    @@transactions << self
   end
 end

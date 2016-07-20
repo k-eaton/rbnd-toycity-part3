@@ -21,6 +21,10 @@ class Customer
     Transaction.new(@name, purchase_product)
   end
 
+  def return_product(return_product)
+    Transaction.new(@name, return_product, "return_product")
+  end
+
   private
 
   def add_to_customers
