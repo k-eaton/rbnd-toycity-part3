@@ -1,0 +1,15 @@
+1. How long did you spend working on this project?
+
+A few days.  It should have been faster but 1) life got in the way, and 2) I do better when I have time for my brain to mull things over.  It works in the background and throws ideas to me a day or so later.
+
+2. What was the most rewarding challenge you conquered?
+
+Figuring out how to access the data in the objects.  Basic stuff, I know, and stupid because it was given to us in the instructions, but for some reason I had a block on it.  I kept treating it like a hash, and of course, that didn't work.
+
+3. What two additional features did you build? Why?
+
+It made sense to me that if you could purchase things, you should be able to return them.  I almost created a whole new class for returns, but realized they were just another type of transaction.  I also thought it would be useful to find transactions by product, and be able to choose which kind of transaction you got in your results.  
+
+4. Where do you still have room to grow?
+
+Everywhere.  It'd feel arrogant to claim any sort of mastery at this level.  Plus there's so damn much to learn.
