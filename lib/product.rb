@@ -21,11 +21,11 @@ class Product
   end
 
   def self.in_stock
-    @@products.select {|product| product.stock > 0}
+    @@products.select {|product| product.in_stock?}
   end
 
   def in_stock?
-    @stock > 0 ? true : false
+    @stock > 0
   end
 
   private

@@ -21,13 +21,13 @@ class Transaction
   end
 
   def self.find_by_product(product, type = "both")
-    if @@transactions.any? {|products| products.product == product}
+    if @@transactions.any? {|transaction| transaction.product == product}
       if type == "both"
-        @@transactions.select {|products| products.product == product}
+        @@transactions.select {|transaction| transaction.product == product}
       elsif type == "purchase"
-        @@transactions.select {|products| products.product == product && products.transaction_type == "purchase"}
+        @@transactions.select {|transaction| transaction.product == product && transaction.transaction_type == "purchase"}
       else
-        @@transactions.select {|products| products.product == product && products.transaction_type != "purchase"}
+        @@transactions.select {|transaction| transaction.product == product && transaction.transaction_type != "purchase"}
       end
     else
       begin
@@ -41,7 +41,7 @@ class Transaction
   private
 
   def purchase_transaction
-    if @product.stock > 1
+    if @product.stock > 0
       @product.stock -= 1
       @@transaction_id += 1
       @@transactions << self
